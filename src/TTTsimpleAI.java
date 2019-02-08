@@ -24,6 +24,6 @@ public class TTTsimpleAI extends Player {
                 }
             }
         }
-
+        return "";
     }
 }
