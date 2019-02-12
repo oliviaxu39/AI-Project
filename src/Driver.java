@@ -37,11 +37,13 @@ public class Driver {
                 String ss=p1.getMove(b1);
                 b1.placePiece(ss, "X");
             }
-            if(!b1.isGameOver()){
+            if(b1.isGameOver()){
                 if(b1.isWinner(player1))
                     System.out.println("PLAYER 1 WINS");
-                else
+                else if (b1.isWinner(player2))
                     System.out.println("PLAYER 2 WINS");
+                else
+                    System.out.println("TIE");
                 check=false;
             }
         }

@@ -31,7 +31,14 @@ public class TTTPlayerProAI extends Player {
         MoveInfo max = new MoveInfo(moveLoc, -10);
         MoveInfo min = new MoveInfo(moveLoc, 10);
 
-        // . . .
+        if (board.isWinner("X"))
+            return new MoveInfo(moveLoc, 10);
+        else if (board.isWinner("O"))
+            return new MoveInfo(moveLoc, -10);
+        else if (board.getEmptyLocs().size()==0)
+            return new MoveInfo(moveLoc, 0);
+
+        for ()
         return null;
 
     }
