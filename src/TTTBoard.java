@@ -96,7 +96,9 @@ public class TTTBoard extends Board {
      * @return true if the game is over, false otherwise
      */
     public boolean isGameOver() {
-        if(isWinner("X") || !isWinner("O") || getEmptyLocs().size() == 0)
+
+
+        if(isWinner("X") || isWinner("O") || getEmptyLocs().size() == 0)
             return true;
         else
             return false;

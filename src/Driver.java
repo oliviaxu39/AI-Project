@@ -33,11 +33,21 @@ public class Driver {
                 b1.placePiece(s1, piece);
                 n=n*-1;
             }
+
             else{
-                String ss=p1.getMove(b1);
-                b1.placePiece(ss, "X");
+                if(n==1) {
+                    String s1 = in.nextLine();
+                    piece = player1;
+                    b1.placePiece(s1, "O");
+                }
+                else {
+                    String ss = p1.getMove(b1);
+                    b1.placePiece(ss, "X");
+                }
+                n=n*-1;
             }
-            if(!b1.isGameOver()){
+            if(b1.isGameOver()){
+
                 if(b1.isWinner(player1))
                     System.out.println("PLAYER 1 WINS");
                 else
