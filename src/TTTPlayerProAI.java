@@ -55,6 +55,6 @@ public class TTTPlayerProAI extends Player {
         if (playerTurn.equals("X"))
             return max;
         else
-            return null;
+            return min;
     }
 }
