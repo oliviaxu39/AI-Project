@@ -38,8 +38,23 @@ public class TTTPlayerProAI extends Player {
         else if (board.getEmptyLocs().size()==0)
             return new MoveInfo(moveLoc, 0);
 
-        for ()
-        return null;
-
+        for (String s:board.getEmptyLocs()) {
+            board.placePiece(s, playerTurn);
+            if (playerTurn.equals("X")) {
+                MoveInfo move = recMove(board, "O", moveLoc);
+                if (move.getScore()>max.getScore())
+                    max=move;
+            }
+            else {
+                MoveInfo move = recMove(board, "X", moveLoc);
+                if (move.getScore()<min.getScore())
+                    min=move;
+            }
+            board.retractPiece(moveLoc);
+        }
+        if (playerTurn.equals("X"))
+            return max;
+        else
+            return min;
     }
 }
