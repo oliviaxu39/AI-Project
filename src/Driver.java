@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class Driver {
     public static void main(String[] args) {
-        Player p1=new TTTsimpleAI("x");
+        Player p1=new TTTsimpleAI("P");
         boolean ishuman=false;
         Board b1 = new TTTBoard();
 
         Scanner in = new Scanner(System.in);
-        System.out.println("What game would you like to play: human, simple AI, or proAI?");
+        System.out.println("What game would you like to play: human, simple AI, or pro AI?");
         String s = in.nextLine();
         int n=-1;
         String player1="X";
@@ -15,6 +15,8 @@ public class Driver {
         String piece;
         if (s.equals("human"))
             ishuman=true;
+        if (s.equals("simple AI"))
+            p1=new TTTsimpleAI("X");
         if(s.equals("pro AI"))
             p1=new TTTPlayerProAI("X");
         boolean check=true;
