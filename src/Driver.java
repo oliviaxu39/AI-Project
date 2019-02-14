@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Driver {
     public static void main(String[] args) {
-        Player p1=new TTTsimpleAI("x");;
+        Player p1=new TTTsimpleAI("x");
         boolean ishuman=false;
         Board b1 = new TTTBoard();
 
@@ -12,7 +12,7 @@ public class Driver {
         int n=-1;
         String player1="X";
         String player2="O";
-        String piece = "X";
+        String piece;
         if (s.equals("human"))
             ishuman=true;
         if(s.equals("pro AI"))
@@ -29,15 +29,13 @@ public class Driver {
                 else{
                     piece = player2;
                 }
-
                 b1.placePiece(s1, piece);
                 n=n*-1;
             }
-
             else{
                 if(n==1) {
                     String s1 = in.nextLine();
-                    piece = player1;
+                    //piece = player1;
                     b1.placePiece(s1, "O");
                 }
                 else {
@@ -47,13 +45,13 @@ public class Driver {
                 n=n*-1;
             }
             if(b1.isGameOver()){
-
                 if(b1.isWinner(player1))
                     System.out.println("PLAYER 1 WINS");
-                else
+                else if (b1.isWinner(player2))
                     System.out.println("PLAYER 2 WINS");
+                else
+                    System.out.println("TIE");
                 check=false;
-                System.out.println(b1.toString());
             }
         }
     }
