@@ -53,6 +53,7 @@ public class Driver {
                 else
                     System.out.println("PLAYER 2 WINS");
                 check=false;
+                System.out.println(b1.toString());
             }
         }
     }

@@ -77,7 +77,7 @@ public class TTTsimpleAI extends Player {
         int num=board.getEmptyLocs().size();
         Random rn =  new Random();
         int location= rn.nextInt(num);
-        return board.getEmptyLocs().get(location)+"";
+        return board.getEmptyLocs().get(location)+"" ;
 
         }
 
