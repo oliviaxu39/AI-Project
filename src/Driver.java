@@ -9,7 +9,7 @@ public class Driver {
         Scanner in = new Scanner(System.in);
         System.out.println("What game would you like to play: human, simple AI, or pro AI?");
         String s = in.nextLine();
-        int n=-1;
+        int n=1;
         String player1="X";
         String player2="O";
         String piece;
@@ -21,9 +21,10 @@ public class Driver {
             p1=new TTTPlayerProAI("X");
         boolean check=true;
         while (check) {
-            System.out.println(b1.toString());
-            System.out.println("Where would you like to move? ");
+
+
             if(ishuman) {
+                System.out.println("Where would you like to move? ");
                 String s1 = in.nextLine();
                 if(n==-1) {
                     piece = player1;
@@ -33,16 +34,23 @@ public class Driver {
                 }
                 b1.placePiece(s1, piece);
                 n=n*-1;
+                System.out.println(b1.toString());
             }
             else{
-                if(n==1) {
+                if(n==-1) {
+                    System.out.println("Where would you like to move? ");
                     String s1 = in.nextLine();
                     //piece = player1;
                     b1.placePiece(s1, "O");
+                    System.out.println(b1.toString());
+
                 }
                 else {
                     String ss = p1.getMove(b1);
                     b1.placePiece(ss, "X");
+
+                    System.out.println(b1.toString());
+
                 }
                 n=n*-1;
             }

@@ -1,3 +1,4 @@
+import javax.xml.bind.SchemaOutputResolver;
 import java.util.ArrayList;
 
 public class TTTPlayerProAI extends Player {
@@ -31,26 +32,31 @@ public class TTTPlayerProAI extends Player {
         MoveInfo max = new MoveInfo(moveLoc, -10);
         MoveInfo min = new MoveInfo(moveLoc, 10);
 
-        if (board.isWinner("X"))
-            return new MoveInfo(moveLoc, 10);
+        if (board.isWinner("X")){
+
+            return new MoveInfo(moveLoc, 10);}
+
         else if (board.isWinner("O"))
             return new MoveInfo(moveLoc, -10);
+
         else if (board.getEmptyLocs().size()==0)
             return new MoveInfo(moveLoc, 0);
 
         for (String s:board.getEmptyLocs()) {
             board.placePiece(s, playerTurn);
             if (playerTurn.equals("X")) {
-                MoveInfo move = recMove(board, "O", moveLoc);
+
+                MoveInfo move = recMove(board, "O", s);
                 if (move.getScore()>max.getScore())
                     max=move;
             }
             else {
-                MoveInfo move = recMove(board, "X", moveLoc);
+
+                MoveInfo move = recMove(board, "X", s);
                 if (move.getScore()<min.getScore())
                     min=move;
             }
-            board.retractPiece(moveLoc);
+            board.retractPiece(s);
         }
         if (playerTurn.equals("X"))
             return max;
