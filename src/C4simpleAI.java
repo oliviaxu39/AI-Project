@@ -10,11 +10,11 @@ public class C4simpleAI extends Player {
 
 
     public String getMove(Board board){
-        if(nextMove((C4Board) board, "X")!=""){
+        if(nextMove((C4Board) board, "X").equals("")){
             System.out.println("true");
             return nextMove((C4Board) board,"X");
         }
-        if(nextMove((C4Board) board, "O")!=""){
+        if(nextMove((C4Board) board, "O").equals("")){
             return nextMove((C4Board) board,"O");
         }
         else{

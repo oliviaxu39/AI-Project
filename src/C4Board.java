@@ -20,10 +20,14 @@ public class C4Board extends Board {
         super(ROWS, COLS);
 
         int count = 1;
-        for (int r = 0; r < ROWS; r++) {
+        for (int r = 0; r <= ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
-                set(r, c, "-");
-                count++;
+                if (r!=ROWS) {
+                    set(r, c, "-");
+                    count++;
+                }
+                else
+                    set(r, c, Integer.toString(c+1));
             }
         }
     }
@@ -34,10 +38,11 @@ public class C4Board extends Board {
      * @param player the player making the move
      */
     public void placePiece(String loc, String player) {
-        for (int r = 0; r < ROWS; r++) {
-            for (int c = 0; c < COLS; c++) {
-                if (theBoard[r][c].equals(loc))
-                    theBoard[r][c] = player;
+        int c=0;
+        for (int r = ROWS-1; r >= 0; r++) {
+            if (theBoard[r][Integer.parseInt(loc)].equals("-") && c==0) {
+                theBoard[r][Integer.parseInt(loc)] = player;
+                c=c+1;
             }
         }
     }
@@ -51,7 +56,7 @@ public class C4Board extends Board {
         boolean done=false;
         int col=Integer.parseInt(loc);
         for (int r = 0; r < ROWS; r++) {
-            if(theBoard[r][col]!="-" && done==true){
+            if(theBoard[r][col]!="-" && !done){
                 theBoard[r][col]="-";
                 done=true;
             }
