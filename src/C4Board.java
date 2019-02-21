@@ -22,12 +22,8 @@ public class C4Board extends Board {
         int count = 1;
         for (int r = 0; r <= ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
-                if (r!=ROWS) {
-                    set(r, c, "-");
-                    count++;
-                }
-                else
-                    set(r, c, Integer.toString(c+1));
+                set(r, c, "-");
+                count++;
             }
         }
     }
