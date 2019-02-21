@@ -20,12 +20,14 @@ public class C4Board extends Board {
         super(ROWS, COLS);
 
         int count = 1;
-        for (int r = 0; r < ROWS; r++) {
+        for (int r = 0; r <= ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
-
+                if (r!=ROWS) {
                     set(r, c, "-");
                     count++;
-
+                }
+                else
+                    set(r, c, Integer.toString(c+1));
             }
         }
     }
