@@ -19,6 +19,11 @@ public class Driver {
             p1=new TTTsimpleAI("X");
         if(s.equals("pro AI"))
             p1=new TTTPlayerProAI("X");
+        if(s.equals("C4")) {
+            p1 = new C4simpleAI("X");
+            b1=new C4Board();
+        }
+        System.out.println(b1.toString());
         boolean check=true;
         while (check) {
 
