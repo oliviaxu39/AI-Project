@@ -16,7 +16,7 @@ public class C4Board extends Board {
      * 456
      * 789
      */
-    public C4Board() {
+    public C4Board(){
         super(ROWS, COLS);
 
         int count = 1;
