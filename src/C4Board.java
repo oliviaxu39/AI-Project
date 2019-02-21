@@ -33,7 +33,7 @@ public class C4Board extends Board {
      * @param loc the location to place the piece
      * @param player the player making the move
      */
-    public void placePiece(String loc, String player) {
+    public void placePiece(String loc, String player){
         int c=0;
         for (int r = ROWS-1; r >= 0; r++) {
             if (theBoard[r][Integer.parseInt(loc)].equals("-") && c==0) {
