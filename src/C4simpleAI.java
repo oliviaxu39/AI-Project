@@ -1,15 +1,10 @@
 import java.util.Random;
 
 /**
- * Created by margheritafirenze on 2/6/19.
+ * Created by oliviaxu on 2/20/19.
  */
-public class TTTsimpleAI extends Player {
-
-    /**
-     * Constucts a new HumanPlayer
-     * @param name
-     */
-    public TTTsimpleAI(String name) {
+public class C4simpleAI extends Player {
+    public C4simpleAI(String name) {
         super(name);
     }
 
@@ -18,10 +13,8 @@ public class TTTsimpleAI extends Player {
      * @param board the board of the game
      * @return location to move
      */
-
-
     public String getMove(Board board){
-        if(board.streakInNorthEastDiag(0,0,"O",2)){
+        if(board.streakInNorthEastDiag(0,0,"O",3)) {
             if(!board.get(0,0).equals("O") && !board.get(0,0).equals("X")){
                 return "1";
             }
@@ -33,7 +26,7 @@ public class TTTsimpleAI extends Player {
             }
         }
         if(board.streakInSouthEastDiag(0,2,"O",2)){
-            if(!board.get(0,2).equals("O") && !board.get(0,2).equals("X")){
+            if(!board.get(0,2).equals("O") && !board.get(0,3).equals("X")){
                 return "3";
             }
             if(!board.get(1,1).equals("O") && !board.get(1,1).equals("X")){
@@ -72,6 +65,7 @@ public class TTTsimpleAI extends Player {
                     return board.get(n,2).toString();
                 }
             }
+
         }
 
         int num=board.getEmptyLocs().size();
@@ -79,8 +73,5 @@ public class TTTsimpleAI extends Player {
         int location= rn.nextInt(num);
         return board.getEmptyLocs().get(location)+"" ;
 
-        }
-
     }
-
-
+}

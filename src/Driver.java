@@ -60,7 +60,7 @@ public class Driver {
                 else if (b1.isWinner(player2))
                     System.out.println("PLAYER 2 WINS");
                 else
-                    System.out.println("TI");
+                    System.out.println("TIE");
                 check=false;
             }
         }
