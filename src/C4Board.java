@@ -48,14 +48,14 @@ public class C4Board extends Board {
      */
     public void retractPiece(String loc) {
         int currentLoc = 1;
-
+        boolean done=false;
+        int col=Integer.parseInt(loc);
         for (int r = 0; r < ROWS; r++) {
-            for (int c = 0; c < COLS; c++) {
-                if (String.valueOf(currentLoc).equals(loc))
-                    theBoard[r][c] = loc;
-
-                currentLoc++;
+            if(theBoard[r][col]!="-" && done==true){
+                theBoard[r][col]="-";
+                done=true;
             }
+
         }
     }
 
@@ -64,11 +64,15 @@ public class C4Board extends Board {
      */
     public ArrayList<String> getEmptyLocs() {
         ArrayList<String> empty = new ArrayList<>();
-
-        for(int r = 0; r < theBoard.length; r++) {
-            for(int c = 0; c < theBoard[0].length; c++) {
-                if(!theBoard[r][c].equals("R") && !theBoard[r][c].equals("Y"))
-                    empty.add((String) theBoard[r][c]);
+        boolean all=false;
+        for(int c = 0; c < theBoard[0].length; c++) {
+            all=false;
+            for(int r = 0; r < theBoard.length; r++) {
+                if(theBoard[r][c].equals("R") && theBoard[r][c].equals("Y"))
+                    all=true;
+            }
+            if(all){
+                empty.add(c+"");
             }
         }
 
@@ -104,6 +108,9 @@ public class C4Board extends Board {
 
         return false;
     }
+
+
+
 
     /**
      * Returns true if the game is over, false otherwise
