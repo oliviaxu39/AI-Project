@@ -7,7 +7,7 @@ public class Driver {
         Board b1 = new TTTBoard();
 
         Scanner in = new Scanner(System.in);
-        System.out.println("What game would you like to play: human, simple AI, or pro AI?");
+        System.out.println("What game would you like to play: human, simple AI, pro AI, or C4?");
         String s = in.nextLine();
         int n=1;
         String player1="X";
