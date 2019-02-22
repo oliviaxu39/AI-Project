@@ -10,12 +10,11 @@ public class C4simpleAI extends Player {
 
 
     public String getMove(Board board){
-        if(nextMove((C4Board) board, "X").equals("")){
-            System.out.println("true");
-            return nextMove((C4Board) board,"X");
+        if(!nextMove((C4Board) board, "R").equals("")){
+            return nextMove((C4Board) board,"R");
         }
-        if(nextMove((C4Board) board, "O").equals("")){
-            return nextMove((C4Board) board,"O");
+        if(!nextMove((C4Board) board, "Y").equals("")){
+            return nextMove((C4Board) board,"Y");
         }
         else{
             int num=board.getEmptyLocs().size();
@@ -33,6 +32,7 @@ public class C4simpleAI extends Player {
      */
     public String nextMove(C4Board board, String player){
         for(String spot: board.getEmptyLocs()){
+
             board.placePiece(spot, player);
 
             for(int n=3; n<=5; n++){
@@ -54,14 +54,14 @@ public class C4simpleAI extends Player {
             }
 
             for(int n=0; n<6; n++) {
-                if (board.streakInRow(n, player, 3)){
+                if (board.streakInRow(n, player,4)){
                     board.retractPiece(spot);
                     return spot;
                 }
             }
 
             for(int n=0; n<7; n++) {
-                if (board.streakInCol(n, player, 3)){
+                if (board.streakInCol(n, player, 4)){
                     board.retractPiece(spot);
                     return spot;
                 }

@@ -1,3 +1,5 @@
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.util.ArrayList;
 
 /**
@@ -20,7 +22,7 @@ public class C4Board extends Board {
         super(ROWS, COLS);
 
         int count = 1;
-        for (int r = 0; r <= ROWS; r++) {
+        for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
                 set(r, c, "-");
                 count++;
@@ -35,12 +37,15 @@ public class C4Board extends Board {
      */
     public void placePiece(String loc, String player) {
         boolean done=false;
-        for (int r = ROWS-1; r >= 0; r++) {
+
+        for (int r = ROWS-1; r >= 0; r--) {
             if (theBoard[r][Integer.parseInt(loc)].equals("-") && !done) {
+
                 theBoard[r][Integer.parseInt(loc)] = player;
                 done=true;
             }
         }
+
     }
 
     /**
@@ -69,7 +74,7 @@ public class C4Board extends Board {
         for(int c = 0; c < theBoard[0].length; c++) {
             all=false;
             for(int r = 0; r < theBoard.length; r++) {
-                if(theBoard[r][c].equals("R") && theBoard[r][c].equals("Y"))
+                if(!theBoard[r][c].equals("R") && !theBoard[r][c].equals("Y"))
                     all=true;
             }
             if(all){
@@ -89,12 +94,23 @@ public class C4Board extends Board {
 
         // check rows for streak
         for(int i = 0; i < getRows(); i++) {
-            if (streakInRow(i, player, 4) || streakInCol(i, player, 4))
+            if (streakInRow(i, player, 4)) {
+                System.out.println(i);
+                System.out.println("row");
                 return true;
+            }
+        }
+        for(int i = 0; i < getCols(); i++) {
+            if (streakInCol(i, player, 4)) {
+                System.out.println(i+" this");
+                System.out.println("col");
+                return true;
+            }
         }
         for(int n=3; n<=5; n++){
             for(int i=0; i<=3; i++){
                 if(streakInNorthEastDiag(n, i, player, 4)){
+                    System.out.println("This 2");
                     return true;
                 }
             }
@@ -102,6 +118,7 @@ public class C4Board extends Board {
         for(int n=0; n<=2; n++){
             for(int i=0; i<=3; i++){
                 if(streakInSouthEastDiag(n, i, player, 4)){
+                    System.out.println("This 3");
                     return true;
                 }
             }
@@ -118,7 +135,8 @@ public class C4Board extends Board {
      * @return true if the game is over, false otherwise
      */
     public boolean isGameOver() {
-        if(isWinner("X") || isWinner("O") || getEmptyLocs().size() == 0)
+
+        if(isWinner("R") || isWinner("Y") || getEmptyLocs().size() == 0)
             return true;
         else
             return false;
