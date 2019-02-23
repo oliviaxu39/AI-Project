@@ -46,7 +46,9 @@ public abstract class Board<E extends Comparable<E>> {
         for(int c = 0; c < theBoard[0].length - 1; c++) {
             if(theBoard[row][c].equals(theBoard[row][c+1]) && theBoard[row][c].equals(piece))
                 times++;
-
+            else {
+                times=1;
+            }
                 if(times == len)
                     return true;
         }
@@ -66,10 +68,16 @@ public abstract class Board<E extends Comparable<E>> {
         int times = 1;
 
         for(int r = 0; r < theBoard.length - 1; r++) {
-            if(theBoard[r][col].equals(theBoard[r+1][col]) && theBoard[r][col].equals(piece))
+            if (theBoard[r][col].equals(theBoard[r + 1][col]) && theBoard[r][col].equals(piece)){
                 times++;
-                if(times == len)
-                    return true;
+
+        }
+            else {
+                times=1;
+            }
+
+          if(times == len)
+              return true;
         }
 
         return false;
@@ -94,7 +102,9 @@ public abstract class Board<E extends Comparable<E>> {
         while(row > 0 && col < theBoard.length - 1) {
             if(theBoard[row][col].equals(theBoard[row-1][col+1]) && theBoard[row][col].equals(piece))
                 times++;
-
+            else {
+                times=1;
+            }
                 if(times == len)
                     return true;
 
@@ -125,7 +135,9 @@ public abstract class Board<E extends Comparable<E>> {
         while(row < theBoard.length - 1 && col < theBoard.length - 1) {
             if(theBoard[row][col].equals(theBoard[row+1][col+1]) && theBoard[row][col].equals(piece))
                 times++;
-
+            else {
+                times=1;
+            }
                 if(times == len)
                     return true;
 

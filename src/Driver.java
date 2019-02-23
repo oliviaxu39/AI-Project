@@ -6,6 +6,7 @@ public class Driver {
         boolean ishumanT=false;
         boolean isHumanC=false;
         Board b1 = new TTTBoard();
+        int count = 1;
 
         Scanner in = new Scanner(System.in);
         System.out.println("What game would you like to play, enter a number:");
@@ -14,7 +15,7 @@ public class Driver {
         System.out.println("3. Tic Tac Toe (Human VS Pro AI)");
         System.out.println("4. Connect Four (Human VS Human)");
         System.out.println("5. Connect Four (Human VS Simple AI)");
-        System.out.println("6. Connect Four (Human VS Pro AI)");
+
         String s = in.nextLine();
         int n=1;
         String player1="X";
@@ -75,8 +76,9 @@ public class Driver {
                     System.out.println("Where would you like to move? ");
                     if(isC4){
                         System.out.println("1234567");
+                        System.out.println(b1.toString());
                     }
-                    System.out.println(b1.toString());
+
                     String s1 = in.nextLine();
                     //piece = player1;
                     if(isC4){
@@ -96,9 +98,11 @@ public class Driver {
                         b1.placePiece(ss, "X");
                     }
                     System.out.println(b1.toString());
+
                 }
                 n=n*-1;
             }
+
             if(b1.isGameOver()){
                 if(b1.isWinner(player1))
                     System.out.println("PLAYER 1 WINS");
