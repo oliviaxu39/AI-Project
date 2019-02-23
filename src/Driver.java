@@ -21,6 +21,7 @@ public class Driver {
         String player1="X";
         String player2="O";
         String piece;
+
         boolean isC4=false;
         if (s.equals("1"))
             ishumanT=true;
@@ -105,13 +106,14 @@ public class Driver {
 
             if(b1.isGameOver()){
                 if(b1.isWinner(player1)) {
+                    System.out.println("PLAYER 1 WINS");
+                }
+                else if (b1.isWinner(player2)) {
                     if (isC4) {
                         System.out.println(b1.toString());
                     }
-                    System.out.println("PLAYER 1 WINS");
-                }
-                else if (b1.isWinner(player2))
                     System.out.println("PLAYER 2 WINS");
+                }
                 else
                     System.out.println("TIE");
                 check=false;

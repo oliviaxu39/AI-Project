@@ -95,22 +95,20 @@ public class C4Board extends Board {
         // check rows for streak
         for(int i = 0; i < getRows(); i++) {
             if (streakInRow(i, player, 4)) {
-                System.out.println(i);
-                System.out.println("row");
+
                 return true;
             }
         }
         for(int i = 0; i < getCols(); i++) {
             if (streakInCol(i, player, 4)) {
-                System.out.println(i+" this");
-                System.out.println("col");
+
                 return true;
             }
         }
         for(int n=3; n<=5; n++){
             for(int i=0; i<=3; i++){
                 if(streakInNorthEastDiag(n, i, player, 4)){
-                    System.out.println("This 2");
+
                     return true;
                 }
             }
@@ -118,7 +116,7 @@ public class C4Board extends Board {
         for(int n=0; n<=2; n++){
             for(int i=0; i<=3; i++){
                 if(streakInSouthEastDiag(n, i, player, 4)){
-                    System.out.println("This 3");
+
                     return true;
                 }
             }

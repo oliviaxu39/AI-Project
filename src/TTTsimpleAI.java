@@ -22,7 +22,7 @@ public class TTTsimpleAI extends Player {
 
     public String getMove(Board board){
         if(!nextMove((TTTBoard) board, "X").equals("")){
-            System.out.println("true");
+
             return nextMove((TTTBoard) board,"X");
         }
         if(!nextMove((TTTBoard)board, "O").equals("")){
