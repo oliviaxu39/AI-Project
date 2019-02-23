@@ -21,11 +21,11 @@ public class TTTsimpleAI extends Player {
 
 
     public String getMove(Board board){
-        if(nextMove((TTTBoard) board, "X")!=""){
+        if(!nextMove((TTTBoard) board, "X").equals("")){
             System.out.println("true");
             return nextMove((TTTBoard) board,"X");
         }
-        if(nextMove((TTTBoard)board, "O")!=""){
+        if(!nextMove((TTTBoard)board, "O").equals("")){
             return nextMove((TTTBoard)board,"O");
         }
         else{
@@ -33,8 +33,7 @@ public class TTTsimpleAI extends Player {
             Random rn= new Random();
             int location= rn.nextInt(num);
             return board.getEmptyLocs().get(location)+"" ;
-
-        }
+            }
         }
 
     /**
@@ -45,11 +44,11 @@ public class TTTsimpleAI extends Player {
     public String nextMove(TTTBoard board, String player){
         for(String spot: board.getEmptyLocs()){
             board.placePiece(spot, player);
-            if(board.streakInNorthEastDiag(2,0,player,3)==true){
+            if(board.streakInNorthEastDiag(2,0,player,3)){
                 board.retractPiece(spot);
                 return spot;
             }
-            if(board.streakInSouthEastDiag(0,0,player,3)==true) {
+            if(board.streakInSouthEastDiag(0,0,player,3)) {
                 board.retractPiece(spot);
                 return spot;
             }

@@ -42,13 +42,11 @@ public class TTTPlayerProAI extends Player {
         for (String s:board.getEmptyLocs()) {
             board.placePiece(s, playerTurn);
             if (playerTurn.equals("X")) {
-
                 MoveInfo move = recMove(board, "O", s);
                 if (move.getScore()>max.getScore())
                     max=new MoveInfo(s, move.getScore());
             }
             else {
-
                 MoveInfo move = recMove(board, "X", s);
                 if (move.getScore()<min.getScore())
                     min=new MoveInfo(s, move.getScore());

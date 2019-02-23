@@ -14,7 +14,7 @@ public class Driver {
         System.out.println("3. Tic Tac Toe (Human VS Pro AI)");
         System.out.println("4. Connect Four (Human VS Human)");
         System.out.println("5. Connect Four (Human VS Simple AI)");
-        System.out.println("6. Connect Four (Human VS PRO AI)");
+        System.out.println("6. Connect Four (Human VS Pro AI)");
         String s = in.nextLine();
         int n=1;
         String player1="X";
@@ -37,7 +37,7 @@ public class Driver {
             p1 = new C4simpleAI("X");
             b1=new C4Board();
             isC4=true;
-             player1="R";
+            player1="R";
             player2="Y";
         }
         if(isC4 || isHumanC){
@@ -46,8 +46,6 @@ public class Driver {
         System.out.println(b1.toString());
         boolean check=true;
         while (check) {
-
-
             if(ishumanT || isHumanC) {
                 System.out.println("Where would you like to move? ");
                 if(isHumanC){
@@ -57,20 +55,23 @@ public class Driver {
 
                 String s1 = in.nextLine();
 
-                if(n==-1) {
+                if(n==1) {
                     piece = player1;
                 }
                 else{
                     piece = player2;
                 }
-                int pt=Integer.parseInt(s1)-1;
-                b1.placePiece(pt+"", piece);
+                if (isHumanC) {
+                    int pt = Integer.parseInt(s1) - 1;
+                    b1.placePiece(pt + "", piece);
+                }
+                else
+                    b1.placePiece(s1, piece);
                 n=n*-1;
                 System.out.println(b1.toString());
             }
             else{
                 if(n==-1) {
-
                     System.out.println("Where would you like to move? ");
                     if(isC4){
                         System.out.println("1234567");
@@ -79,16 +80,12 @@ public class Driver {
                     String s1 = in.nextLine();
                     //piece = player1;
                     if(isC4){
-
-
                         int pt=Integer.parseInt(s1)-1;
                         b1.placePiece(pt+"", "Y");
                     }
                     else {
                         b1.placePiece(s1, "O");
                     }
-
-
                 }
                 else {
                     String ss = p1.getMove(b1);
@@ -96,10 +93,9 @@ public class Driver {
                         b1.placePiece(ss, "R");
                     }
                     else {
-                        b1.placePiece(ss, "Y");
+                        b1.placePiece(ss, "X");
                     }
                     System.out.println(b1.toString());
-
                 }
                 n=n*-1;
             }
