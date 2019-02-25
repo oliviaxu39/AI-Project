@@ -15,6 +15,7 @@ public class Driver {
         System.out.println("3. Tic Tac Toe (Human VS Pro AI)");
         System.out.println("4. Connect Four (Human VS Human)");
         System.out.println("5. Connect Four (Human VS Simple AI)");
+        System.out.println("6. Connect Four (Human VS Pro AI)");
 
         String s = in.nextLine();
         int n=1;
@@ -36,12 +37,20 @@ public class Driver {
             player2="Y";
         }
         if(s.equals("5")) {
-            p1 = new C4simpleAI("X");
+            p1 = new C4simpleAI("R");
             b1=new C4Board();
             isC4=true;
             player1="R";
             player2="Y";
         }
+        if(s.equals("6")){
+            p1= new C4ProAI("R");
+            b1=new C4Board();
+            isC4=true;
+            player1="R";
+            player2="Y";
+        }
+
         if(isC4 || isHumanC){
             System.out.println("1234567");
         }
@@ -84,7 +93,9 @@ public class Driver {
                     //piece = player1;
                     if(isC4){
                         int pt=Integer.parseInt(s1)-1;
+                        System.out.println("hello");
                         b1.placePiece(pt+"", "Y");
+                        System.out.println(b1.toString());
                     }
                     else {
                         b1.placePiece(s1, "O");
